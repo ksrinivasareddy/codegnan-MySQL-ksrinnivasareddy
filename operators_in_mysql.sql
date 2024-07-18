@@ -54,6 +54,56 @@ end as bonus
 from employee;
     
 -- string operators
+-- concat
 
 select name,age, concat(name," (",age," in age )") as data from employee
 
+-- concat_ws(with separator)
+
+alter table employee add column surname varchar(10)
+set sql_safe_updates=0;
+
+update employee set surname="kutluri" where name ="srinu"
+update employee set surname="a" where name ="ravio"
+update employee set surname="c" where name ="venkat"
+update employee set surname="p" where name ="varun"
+update employee set surname="a" where name ="gopi"
+
+select * from employee
+
+select id,concat(name,"",surname) as full_name from employee 
+-- concat_ws
+
+select id,age,concat_ws(" ",name,surname,salary) as full_name from employee
+
+-- lower and upper
+
+select upper(surname) from employee
+select lower(name) from employee
+
+-- character_length
+-- length and char_length
+
+select length(surname) as len from employee
+select char_length(surname) as clen from employee
+
+-- substring
+
+select substring(name,3,5) from employee
+
+-- reverse
+
+select id,name,reverse(name) as rev from employee
+ 
+ 
+ -- replace
+ 
+ select replace(surname,"a","ampabathina") as re from employee where name="ravio"
+ 
+ -- like
+ 
+ select * from employee where name like "s%"
+ 
+ select * from employee where name like"____o"
+  select * from employee where name like"sr__u"
+  
